@@ -1,0 +1,47 @@
+<!--
+/**
+ *  Description     :   Send text message to the Mobile number provided by the user using Twilio via salesforce UI.
+ *
+ *  Created By      :   Abhi Tripathi
+ *
+ *  Created Dare    :   6/20/2014
+ *
+ *  Version         :   V1.0
+ **/  
+-->
+<apex:page controller="TwilioIntegrationWithSfdcPOC">
+
+     <apex:sectionHeader title="Send Text Message"/>
+    <apex:form >
+    
+        <!-- message -->
+        <apex:pageMessages />
+    
+        <!-- page block -->
+        <apex:pageBlock mode="edit" >
+        
+            <!-- button -->
+            <apex:pageblockButtons >
+                <apex:commandButton action="{!sendTextMessage}" value="Send Message"/>
+            </apex:pageblockButtons>
+            
+            <!-- section -->
+            <apex:pageblockSection columns="1" title="Enter Values">
+                
+                <!-- destination mobile number -->
+                <apex:pageblockSectionItem >
+                    Mobile Number
+                    <apex:inputText value="{!mobileNumber}"/>
+                </apex:pageblockSectionItem>
+                
+                <!-- text message -->
+                <apex:pageblockSectionItem >
+                    Text Message
+                    <apex:inputTextArea value="{!textMessage}" style="width:6cm;height:2cm;"/>
+                </apex:pageblockSectionItem>
+                
+            </apex:pageblockSection>
+        
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

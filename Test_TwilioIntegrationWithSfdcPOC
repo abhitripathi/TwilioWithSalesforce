@@ -1,0 +1,42 @@
+@isTest(seeAllData=false)
+private class Test_TwilioIntegrationWithSfdcPOC {
+
+    /**
+     *  Description     :   Unit testing for the TwilioIntegrationWithSfdcPOC
+     *
+     *  Created By      :   Abhi Tripathi
+     *
+     *  Created Date    :   6/20/2014
+     *
+     *  Version         :   V1.0
+     **/
+    static testMethod void myUnitTest() {
+        
+        //Creation of Custom setting data
+        Twilio_Configuration__c config = new Twilio_Configuration__c(FromPhoneNumber__c = '3256033573');
+        insert config;
+        
+        //Test starts here
+        Test.startTest();
+        
+        //Calling controller
+        TwilioIntegrationWithSfdcPOC controller = new TwilioIntegrationWithSfdcPOC();
+        TwilioIntegrationWithSfdcPOC.MessageResponse mesgResponse = new TwilioIntegrationWithSfdcPOC.MessageResponse();
+        
+        //User input values
+        controller.phoneNumber = config.fromPhoneNumber__c;   
+        controller.mobileNumber = '+919928833992';
+        controller.textMessage = 'Testing Text Messages Using Twilio';
+        
+        //Calling method
+        controller.sendTextMessage();
+        
+        System.debug('mesgResponse.status::::::::::' + mesgResponse.status);    
+        
+        //Test stops here
+        Test.stopTest();            
+        
+        //Assert for result
+        System.assert( mesgResponse.status == 'queued');
+    }
+}

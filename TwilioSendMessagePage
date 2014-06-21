@@ -14,7 +14,7 @@
      <apex:sectionHeader title="Send Text Message"/>
     <apex:form >
     
-        <!-- message -->
+        <!-- message --> 
         <apex:pageMessages />
     
         <!-- page block -->
